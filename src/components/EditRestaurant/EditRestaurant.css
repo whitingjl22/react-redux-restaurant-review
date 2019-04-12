@@ -1,0 +1,23 @@
+.editRestaurantContainer p {
+  margin-left: 22px;
+}
+
+.editRestaurantContainer form {
+  margin-left: 22px;
+}
+
+.nameInput {
+  margin-left: -55px;
+}
+
+.table {
+  border-style: solid;
+  width: 300px;
+  margin: 20px;
+  height: 170px;
+}
+
+.errorMessage {
+  margin-left: 22px;
+  color: red;
+}

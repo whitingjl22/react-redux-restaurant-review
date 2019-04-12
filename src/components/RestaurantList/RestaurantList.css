@@ -1,0 +1,19 @@
+.restaurantListContainer button {
+  margin-left: 22px;
+}
+
+.restaurantList_contentContainer {
+  border-style: solid;
+  width: 700px;
+  margin: 20px;
+  min-height: 300px;
+  background: lightgray;
+}
+
+.restaurantList_resultContainer td {
+  padding-right: 80px;
+}
+
+.restaurantList_resultContainer th {
+  padding-right: 80px;
+}

@@ -1,0 +1,23 @@
+.reviewList_contentContainer {
+  border-style: solid;
+  width: 700px;
+  margin: 20px;
+  min-height: 300px;
+  background: lightgray;
+}
+
+.reviewListContainer p {
+  margin-left: 22px;
+}
+
+.reviewListContainer button {
+  margin-left: 22px;
+}
+
+.reviewList_resultContainer td {
+  padding-right: 80px;
+}
+
+.reviewList_resultContainer th {
+  padding-right: 80px;
+}
