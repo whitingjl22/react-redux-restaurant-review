@@ -11,9 +11,6 @@ class RestaurantList extends React.Component {
     this.state = {}
   }
   render() {
-    console.log("AUTHOR-LIST PAGE PROPS:", this.props)
-    console.log("AUTHOR-LIST PAGE STATE:", this.state)
-
     return (
       <div className="restaurantListContainer">
         <Link to={"/restaurants/new"}>
