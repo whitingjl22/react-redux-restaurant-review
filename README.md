@@ -30,7 +30,7 @@ npm run preview              # Preview the production build after npm run build
 - Responsive layout, keyboard-accessible controls, labeled fields, inline errors, route focus management, and empty/not-found states.
 - Versioned browser persistence validated with Zod. Storage errors are visible; unreadable saved data is never silently overwritten.
 - Automated state, validation, form, routing, persistence, and desktop/mobile browser tests, plus GitHub Actions CI.
-- Original CSS food illustrations: no image API, asset credentials, or image hosting. Optional Google Fonts have system-font fallbacks.
+- Locally bundled food photography, a compact editorial header, and responsive photo-led cards. Optional Google Fonts have system-font fallbacks.
 
 This is a **local demo**. Data belongs to this browser and origin, is not shared between users, and is not synchronized across devices or open tabs. Closing a tab after a storage failure can lose unsaved changes. Clearing site storage removes the collection. Don’t use it to store sensitive information. The Vite development server binds to loopback only.
 
@@ -84,3 +84,12 @@ There is no placeholder API or partial database wiring in this branch. No deploy
 - [Redux Toolkit TypeScript guidance](https://redux-toolkit.js.org/usage/usage-with-typescript/)
 
 The tests are the acceptance criteria for this milestone. CI runs the same checks on pull requests; browser traces are uploaded on failure.
+
+## Photography credits
+
+The bundled images are illustrative food photography, not verified photos of the listed businesses. Unknown cuisines use a neutral placeholder.
+
+- `public/images/grilled-chicken.jpg`: [Quilia on Unsplash](https://unsplash.com/photos/fried-chickens-on-plate-8Cerf3zW8hA), under the [Unsplash License](https://unsplash.com/license).
+- `public/images/tacos.jpg`: [John Guccione on Pexels](https://www.pexels.com/photo/tacos-in-close-up-photography-7904958/), under the [Pexels License](https://www.pexels.com/license/).
+
+Images are served locally without runtime requests to a photo service.

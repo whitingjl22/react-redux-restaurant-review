@@ -52,23 +52,25 @@ function Artwork({
   cuisine: string;
   large?: boolean;
 }) {
+  const kind = cuisine.toLowerCase();
+  const image = kind.includes("mex")
+    ? "/images/tacos.jpg"
+    : kind.includes("carib")
+      ? "/images/grilled-chicken.jpg"
+      : null;
   return (
-    <div
-      aria-hidden="true"
-      className={`artwork ${cuisine.toLowerCase().includes("mex") ? "terracotta" : "olive"} ${large ? "large" : ""}`}
-    >
-      <span className="art-label">GOOD FOOD. GOOD COMPANY.</span>
-      <div className="plate">
-        <div className="food">
-          <i />
-          <i />
-          <i />
-          <b />
-          <b />
-          <b />
+    <div className={`artwork ${large ? "large" : ""}`}>
+      {image ? (
+        <>
+          <img src={image} alt="" loading="lazy" width={1200} height={800} />
+          <span className="photo-note">Illustrative food photo</span>
+        </>
+      ) : (
+        <div className="photo-placeholder">
+          <Utensils size={32} aria-hidden="true" />
+          <span>A new discovery</span>
         </div>
-      </div>
-      <span className="art-caption">{cuisine} kitchen</span>
+      )}
     </div>
   );
 }
@@ -155,58 +157,42 @@ function Directory() {
     <>
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">
-            <span /> YOUR NEXT GREAT MEAL STARTS HERE
-          </p>
+          <p className="eyebrow">THE GOOD FOOD JOURNAL</p>
           <h1>
-            Good food.
+            A good meal.
             <br />
-            Better discoveries.
+            <em>A great discovery.</em>
           </h1>
           <p className="hero-description">
-            The places you love. The meals worth sharing.
+            Keep the places you love close.
             <br />
-            Find a favorite, or put a new one on the map.
+            Find your next favorite, one honest review at a time.
           </p>
-          <a className="text-link" href="#directory">
-            Explore the collection <ArrowUpRight size={18} />
-          </a>
         </div>
-        <div className="hero-visual" aria-hidden="true">
-          <div className="hero-ring" />
-          <span className="hero-note">
-            a taste of
-            <br />
-            <em>something good.</em>
-          </span>
-          <div className="hero-dish">
-            <div className="dish-center">
-              <span>✳</span>
-              <span>✳</span>
-              <span>✳</span>
-              <i />
-              <i />
-              <i />
-            </div>
+        <div className="hero-visual">
+          <img
+            src="/images/tacos.jpg"
+            alt="Tacos topped with fresh cilantro and onions"
+            width={1200}
+            height={800}
+            fetchPriority="high"
+          />
+          <div className="hero-caption">
+            <span>STAY CURIOUS. EAT WELL.</span>
+            <span>Good things are worth sharing.</span>
           </div>
-          <div className="hero-sticker">
-            MADE FOR
-            <br />
-            <strong>food lovers</strong>
-            <Utensils size={22} />
-          </div>
-          <span className="vertical-note">DISCOVER · SAVOR · SHARE</span>
         </div>
       </section>
       <section className="collection" id="directory">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">THE COLLECTION</p>
-            <h2>Find your next favorite</h2>
+            <p className="eyebrow">YOUR LITTLE BLACK BOOK</p>
+            <h2>The collection</h2>
           </div>
           <p className="collection-count">
-            {restaurants.length} restaurants <span>·</span> {reviewCount}{" "}
-            reviews
+            {restaurants.length}{" "}
+            {restaurants.length === 1 ? "restaurant" : "restaurants"}{" "}
+            <span>·</span> {reviewCount} reviews
           </p>
         </div>
         <div className="filters">
@@ -269,7 +255,9 @@ function Directory() {
             </button>
           )}
         </div>
-        <div className="restaurant-grid">
+        <div
+          className={`restaurant-grid ${results.length === 1 ? "single-result" : ""}`}
+        >
           {results.map((r) => (
             <article className="restaurant-card" key={r.id}>
               <Link
@@ -304,7 +292,8 @@ function Directory() {
                     className="round-link"
                     aria-label={`Read reviews for ${r.name}`}
                   >
-                    <ArrowUpRight size={20} />
+                    <span>Read reviews</span>
+                    <ArrowUpRight size={17} />
                   </Link>
                 </div>
               </div>
@@ -415,7 +404,7 @@ function Detail() {
         <Artwork cuisine={r.cuisine} large />
         <div>
           <div className="section-heading">
-            <h2>At the table</h2>
+            <h2>What people are saying</h2>
             <span className="muted">{r.reviews.length} reviews</span>
           </div>
           {r.reviews.length ? (
@@ -570,7 +559,7 @@ function RestaurantEditor({ restaurant: r }: { restaurant?: Restaurant }) {
   return (
     <section className="page form-page">
       <Back to={back} />
-      <p className="eyebrow">GROW THE COLLECTION</p>
+      <p className="eyebrow">GROW YOUR LITTLE BLACK BOOK</p>
       <h1>{r ? "Edit your discovery." : "Share a good spot."}</h1>
       <p className="form-intro">
         A neighborhood favorite or a new find — every great place belongs here.
